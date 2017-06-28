@@ -19,7 +19,7 @@ public class DataBaseConnection {
     public DataBaseConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            sqlConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/appointments", "root", "7895123.zZ");
+            sqlConnection = DriverManager.getConnection("jdbc:mysql://192.168.1.126:3306/appointments", "hector", "7895123.zZ");
             sqlStatement = sqlConnection.createStatement();
 
         } catch (ClassNotFoundException e) {
@@ -48,11 +48,8 @@ public class DataBaseConnection {
         String getAvailableSlots = "SELECT * FROM appointments WHERE appointmentDate > "
                 + new SimpleDateFormat("YYYY-MM-DD").format(new java.util.Date());
         try {
-            ResultSet result = sqlStatement.executeQuery(getAvailableSlots);
-            while(result.next()){
-                System.out.println(result.getString(1) + result.getString(2));
-            }
-        } catch (SQLException e) {
+            Main.currentAppointments = sqlStatement.executeQuery(getAvailableSlots);
+         } catch (SQLException e) {
             e.printStackTrace();
         }
     }

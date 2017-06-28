@@ -40,11 +40,11 @@ public class Controller {
         String FirstName = customerFirstName.getText();
         String LastName = customerLastName.getText();
         String Date = appointmentDate.getValue().toString();
-        //String time = new SimpleDateFormat("HH:mm:ss").format(appointmentTimeComboBox.getSelectionModel().getSelectedItem());
-        Main.dbconnect.addAppointment(FirstName,LastName,Date,"10:00:00","CONFIRMED");
+        String time = new SimpleDateFormat("HH:mm:ss").format(appointmentTimeComboBox.getSelectionModel().getSelectedItem());
+        Main.dbconnect.addAppointment(FirstName,LastName,Date,time,"CONFIRMED");
         JOptionPane.showMessageDialog(null,"Appointment Confirmation for: \n" +
-                "Name: " + customerFirstName.getText().toString() + " " + customerLastName.getText() + "\n" +
-                 "Date: " + appointmentDate.getValue() + "\n"
+                "Name: " + FirstName  + " " + LastName + "\n" +
+                 "Date: " + Date + "\n"
                   ,"Confirmation",JOptionPane.INFORMATION_MESSAGE);
     }
     @FXML

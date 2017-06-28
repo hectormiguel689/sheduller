@@ -5,10 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import javax.xml.transform.Result;
 import java.sql.*;
 
 public class Main extends Application {
     static DataBaseConnection dbconnect;
+    static ResultSet currentAppointments;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
